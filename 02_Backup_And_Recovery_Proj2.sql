@@ -1,4 +1,3 @@
-
 -- PROJE 2: YEDEKLEME VE FELAKETTEN KURTARMA PLANLAMASI
 
 USE master;
@@ -59,21 +58,21 @@ GO
 
 SELECT * FROM Siparisler;
 GO
+
+-- 4. KURTARMA SENARYOSU (Restore - Point in Time Recovery)
 USE master;
 GO
 
--- SSMS'in veya arka plan işlemlerinin kilitlerini zorla kırmak için veritabanı "Tek Kullanıcı" (Single User) moduna alınır.
--- Aksi takdirde SSMS sekmesi açık olduğu için "database is in use" hatası alınır.
+-- SSMS'in veya arka plan işlemlerinin kilitlerini kırmak için veritabanını "Tek Kullanıcı" moduna alınır.
 ALTER DATABASE TechMarketDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 GO
 
+-- Kuyruk yedeğini alın (Veritabanı dondurulur)
 BACKUP LOG TechMarketDB
 TO DISK = 'C:\Backup\TechMarketDB_TailLog.trn'
-WITH NO_TRUNCATE, NORECOVERY,
+WITH INIT, NO_TRUNCATE, NORECOVERY,
 NAME = 'TechMarketDB Tail Log Backup';
 GO
-
--- 4. KURTARMA SENARYOSU (Restore - Point in Time Recovery)
 
 -- Full Backup'ı Geri Yükle 
 RESTORE DATABASE TechMarketDB
@@ -87,18 +86,13 @@ FROM DISK = 'C:\Backup\TechMarketDB_Diff.bak'
 WITH NORECOVERY;
 GO
 
--- Önceki Log Yedeğini Yükle 
+-- Önceki Temiz Log Yedeğini Yükle 
 RESTORE LOG TechMarketDB
 FROM DISK = 'C:\Backup\TechMarketDB_Log1.trn'
-WITH NORECOVERY;
-GO
-
--- Tail-Log Yedeğini Yükle ve Felaket Anından ÖNCEKİ bir T-anına dön
-RESTORE LOG TechMarketDB
-FROM DISK = 'C:\Backup\TechMarketDB_TailLog.trn'
 WITH RECOVERY;
 GO
 
+-- Veritabanı kurtarıldıktan sonra tekrar Çoklu Kullanıcıya açılır
 ALTER DATABASE TechMarketDB SET MULTI_USER;
 GO
 
@@ -109,6 +103,7 @@ SELECT * FROM Siparisler;
 GO
 PRINT 'Yedekleme ve Geri Yükleme senaryosu tamamlandı.';
 GO
+
 
 -- 5. ZAMANLAYICI İLE OTOMATİK YEDEKLEME (SQL Server Agent)
 USE msdb;
