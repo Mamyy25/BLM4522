@@ -1,5 +1,7 @@
 # BLM4522 PROJE RAPORU
 
+**Proje Videosu:** https://drive.google.com/file/d/123iYgwJMOH_b7b04qgT2DYQxwCt0sdci/view?usp=drive_link
+
 ## BÖLÜM 1: YEDEKLEME VE FELAKETTEN KURTARMA PLANI (PROJE 2)
 
 ### 1.1. Full, Log ve Fark Yedeklemeleri
