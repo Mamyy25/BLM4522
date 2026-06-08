@@ -1,6 +1,6 @@
 # BLM4522 PROJE RAPORU
 
-**Proje Videosu:** https://drive.google.com/file/d/123iYgwJMOH_b7b04qgT2DYQxwCt0sdci/view?usp=drive_link
+**Drive Linki:** https://drive.google.com/drive/folders/1IiPwbvQ_XZO259W9J8NKdW0_gDG01TxS?usp=drive_link
 
 ## BÖLÜM 1: YEDEKLEME VE FELAKETTEN KURTARMA PLANI (PROJE 2)
 
