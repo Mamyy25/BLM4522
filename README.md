@@ -1,5 +1,7 @@
 # BLM4522 - Veritabanı Yönetimi Projeleri
 
+Drive Linki : https://drive.google.com/drive/folders/1IiPwbvQ_XZO259W9J8NKdW0_gDG01TxS?usp=drive_link
+
 Bu depo, **Ankara Üniversitesi Bilgisayar Mühendisliği** bölümü **BLM4522 (Ağ Tabanlı Paralel Dağıtım Sistemleri)** dersi kapsamında hazırlanmış veritabanı yönetimi projelerini içermektedir.
 
 Muhammed Eren Köseoğlu — 22290604
